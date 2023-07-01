@@ -3,7 +3,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-pair<long long, long long> solution(long long arr[], int n) {
+// time complexity: O(nlogn)
+pair<long long, long long> solution1(long long arr[], int n) {
+    sort(arr, arr + n);
+    
+    return {arr[0], arr[n - 1]}; 
+}
+
+// time complexity: O(n)
+pair<long long, long long> solution2(long long arr[], int n) {
     pair<long long, long long> res;
     long long minn = arr[0], maxx = arr[0];
     
@@ -23,6 +31,9 @@ int main() {
     long long arr[n];
     for (int i = 0; i < n; i++) cin >> arr[i];
 
-    pair <long long, long long> res = solution(arr, n);
-    cout << res.first << ' ' << res.second;
+    pair <long long, long long> res1 = solution1(arr, n);
+    pair <long long, long long> res2 = solution2(arr, n);
+
+    cout << res1.first << ' ' << res1.second << endl;
+    cout << res2.first << ' ' << res2.second;
 }
